@@ -20,12 +20,14 @@ The Laravel framework has a few [system requirements](https://laravel.com/docs/d
 
 Run **`laravel new laravel-app`** to install Laravel within the project. Note that the project name is `laravel-app` and it is not possible to install it in already existing directory which is not empty, but the current GitHub repository was previously initialized...
 
-## MySQL Enable, Create or Remove Database
+## MySQL
 
 <details>
 
-<summary>
-In the directory [`scripts/sql`](scripts/sql/) are available two manual like SQL files. We can suppress the comments and use them as SQL scrips to create or remove the `db_name` and `db_admin` MySQL database and user used in this tutorial.
+<summary> <em>Create or Remove Database:</em>
+
+In the directory [`scripts/sql`](scripts/sql/) are available three manual like SQL files. We can suppress the comments and use them as SQL scrips to create or remove the `db_name` and `db_admin` MySQL database and user used in this tutorial.
+
 </summary>
 
 ```bash
