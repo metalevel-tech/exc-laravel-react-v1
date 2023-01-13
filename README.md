@@ -25,9 +25,7 @@ Run **`laravel new laravel-app`** to install Laravel within the project. Note th
 <details>
 
 <summary>
-
 In the directory [`scripts/sql`](scripts/sql/) are available two manual like SQL files. We can suppress the comments and use them as SQL scrips to create or remove the `db_name` and `db_admin` MySQL database and user used in this tutorial.
-
 </summary>
 
 ```bash
