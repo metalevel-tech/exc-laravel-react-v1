@@ -4,12 +4,12 @@
     "module": "es6",
     "jsx": "react",
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true,
-    "checkJs": true,
+    // "checkJs": true,                       // Causes too much unnecessary noise for this project
+    // "allowSyntheticDefaultImports": true,  // This is TS option
+    // "noImplicitAny": true,                 // This is TS option
     "baseUrl": "./",
     "paths": {
-      "*": ["*"]
+      "../*": ["./src/*"]
     }
   },
   "exclude": ["node_modules"]
