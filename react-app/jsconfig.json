@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
     "target": "es6",
+    "module": "es6",
     "jsx": "react",
-    "checkJs": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
-    "baseUrl": "./src",
+    "checkJs": true,
+    "baseUrl": "./",
     "paths": {
       "*": ["*"]
     }
