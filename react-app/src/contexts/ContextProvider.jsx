@@ -5,10 +5,13 @@ import React, { createContext, useContext, useState } from "react";
  * important for the autocompletion function of the IDE.
  */
 const StateContext = createContext({
-  user: null,
+  user: {
+    id: null,
+    name: ""
+  },
   token: null,
-  setUser: () => { },
-  setToken: () => { }
+  setUser: () => {},
+  setToken: () => {}
 });
 
 /**
@@ -18,29 +21,32 @@ const StateContext = createContext({
  */
 export const ContextProvider = ({ children }) => {
   // Create the actual states
-  const [user, setUser] = useState({});
-  // const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
-  const [token, _setToken] = useState(123);
+  const [user, setUser] = useState({
+    name: "Spas"
+  });
+  const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
 
   const setToken = (token) => {
     _setToken(token);
 
     if (token) {
-      localStorage.setItem('ACCESS_TOKEN', token);
+      localStorage.setItem("ACCESS_TOKEN", token);
     } else {
-      localStorage.removeItem('ACCESS_TOKEN');
+      localStorage.removeItem("ACCESS_TOKEN");
     }
   };
 
   return (
     // The outer curly braces are for React,
     // the inner are for the passing JS-object.
-    <StateContext.Provider value={{
-      user,
-      token,
-      setUser,
-      setToken
-    }}>
+    <StateContext.Provider
+      value={{
+        user,
+        token,
+        setUser,
+        setToken
+      }}
+    >
       {children}
     </StateContext.Provider>
   );

@@ -174,3 +174,4 @@ scripts/sql/db_remove.sql | sudo mysql
   - [Laravel Bootcamp](https://bootcamp.laravel.com/introduction)
   - [Laravel Starter Kits](https://laravel.com/docs/9.x/starter-kits)
   - [Laravel Asset Bundling (Vite)](https://laravel.com/docs/9.x/vite#react)
+  - [VSCode Auto Replace Single Quotes with Double Quotes](https://ourtechroom.com/fix/vscode-auto-replace-single-quotes-with-double-quotes-solved/)

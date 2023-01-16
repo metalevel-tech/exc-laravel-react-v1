@@ -1,6 +1,6 @@
-import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import { useStateContext } from '../contexts/ContextProvider';
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { useStateContext } from "../contexts/ContextProvider";
 
 export default function GuestLayout() {
   const { token } = useStateContext();
@@ -12,12 +12,7 @@ export default function GuestLayout() {
 
   return (
     <div>
-      <div>
-        For guest users only.
-      </div>
-      <div>
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   );
 }

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Navigate, Outlet, Link } from 'react-router-dom';
-import { useStateContext } from '../contexts/ContextProvider';
+import React from "react";
+import { Navigate, Outlet, Link } from "react-router-dom";
+import { useStateContext } from "../contexts/ContextProvider";
 
 export default function DefaultLayout() {
   const { user, token } = useStateContext();
@@ -10,10 +10,10 @@ export default function DefaultLayout() {
     return <Navigate to="/login" />;
   }
 
-  /**
-   * The <Link> tags are react Router tags.
-   * Remember within JSX we using `className` in place of HTML `class`.
-   */
+  const onLogout = (ev) => {
+    ev.preventDefault();
+  };
+
   return (
     <div id="defaultLayout">
       <aside>
@@ -23,12 +23,13 @@ export default function DefaultLayout() {
 
       <div className="content">
         <header>
-          <div>
-            Header
-          </div>
+          <div>Header</div>
 
           <div>
-            User info
+            {user.name}
+            <a href="#" onClick={onLogout} className="btn-logout">
+              Logout
+            </a>
           </div>
         </header>
 

@@ -8,7 +8,6 @@ import NotFound from "./views/NotFound";
 import Signup from "./views/Signup";
 import Users from "./views/Users";
 
-
 const router = createBrowserRouter([
   {
     path: "/",
