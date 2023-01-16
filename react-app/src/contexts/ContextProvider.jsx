@@ -19,7 +19,8 @@ const StateContext = createContext({
 export const ContextProvider = ({ children }) => {
   // Create the actual states
   const [user, setUser] = useState({});
-  const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
+  // const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
+  const [token, _setToken] = useState(123);
 
   const setToken = (token) => {
     _setToken(token);

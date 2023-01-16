@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet, Link } from 'react-router-dom';
 import { useStateContext } from '../contexts/ContextProvider';
 
 export default function DefaultLayout() {
@@ -10,13 +10,31 @@ export default function DefaultLayout() {
     return <Navigate to="/login" />;
   }
 
+  /**
+   * The <Link> tags are react Router tags.
+   * Remember within JSX we using `className` in place of HTML `class`.
+   */
   return (
-    <div>
-      <div>
-        For logged-in users only!
-      </div>
-      <div>
-        <Outlet />
+    <div id="defaultLayout">
+      <aside>
+        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/users">Users</Link>
+      </aside>
+
+      <div className="content">
+        <header>
+          <div>
+            Header
+          </div>
+
+          <div>
+            User info
+          </div>
+        </header>
+
+        <main>
+          <Outlet />
+        </main>
       </div>
     </div>
   );
