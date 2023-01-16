@@ -5,7 +5,7 @@ import { useStateContext } from '../contexts/ContextProvider';
 export default function DefaultLayout() {
   const { user, token } = useStateContext();
 
-  if (!token) {
+  if (!token) { // The user is NOT authenticated
     return <Navigate to="/login" />;
   }
 
