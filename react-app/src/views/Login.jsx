@@ -7,6 +7,13 @@ export default function Login() {
   };
 
   return (
+    // The layout tags (first 2 <div>) can be moved
+    // to the <GuestLayout> component, but we will lost
+    // the animation: https://youtu.be/qJq9ZMB2Was?t=3464
+    // We can create a state in the <GuestLayout> component,
+    // and pass it to the <Login> and <Signup> components,
+    // where it will be changed to trigger rendering of the
+    // parent and the animation will be triggered too.
     <div className="login-signup-form animated fadeInDown">
       <div className="form">
         <form onSubmit={onSubmit}>
