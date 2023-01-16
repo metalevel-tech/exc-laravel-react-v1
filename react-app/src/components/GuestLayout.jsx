@@ -4,9 +4,9 @@ import { useStateContext } from '../contexts/ContextProvider';
 
 export default function GuestLayout() {
   const { token } = useStateContext();
-  // debugger;
 
-  if (token) { // The user is authenticated
+  if (token) {
+    // The user is authenticated
     return <Navigate to="/" />;
   }
 
