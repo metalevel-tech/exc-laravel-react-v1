@@ -162,9 +162,12 @@ scripts/sql/db_remove.sql | sudo mysql
 - [React](https://reactjs.org/)
 - [React Router](https://reactrouter.com/)
 - [React Router GitHub](https://github.com/remix-run/react-router)
+- [What's New In React 18?](https://blog.webdevsimplified.com/2021-06/react-18-changes/)
 - [NodeJS and NPM Install](https://wiki.metalevel.tech/wiki/Node.js_Getting_Started)
 - [Vite: Next Generation Frontend Tooling](https://vitejs.dev/)
+- [Vite: Env Variables and Modes](https://vitejs.dev/guide/env-and-mode.html)
 - [MariaDB Docs](https://mariadb.com/kb/en/authentication-from-mariadb-104/)
+- [HTTP Status Codes | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 - [TheCodeholic at GitHub: laravel-react-starter](https://github.com/thecodeholic/laravel-react-starter)
 - React and VSCode:
   - [JavaScript in Visual Studio Code](https://code.visualstudio.com/docs/languages/javascript)
