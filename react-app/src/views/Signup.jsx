@@ -28,11 +28,9 @@ export default function Signup() {
     axiosClient
       .post("/signup", payload)
       .then((response) => {
-        // We can destructure the response object within
-        // the function parameters part...
-        // `data` is the actual server's response.
-        // `status` is the status of the response, we can
-        // use it like: if (status !== 200) throw someError;
+        // We can destructure the response object within the function parameters part...
+        // `data` is the actual server's response. `status` is the status of the response,
+        // we can use it in this way: if (status !== 200) throw someError;
         const { data, status } = response;
 
         // Once the user and token are set tha application will be RERENDER
@@ -45,10 +43,7 @@ export default function Signup() {
         // This is the actual response of the server.
         const response = error.response;
 
-        /**
-         * HTTP 422 Validation error:
-         * https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422
-         */
+        // HTTP 422 Validation error
         if (response && response.status === 422) {
           // `data` is the actual server's response.
           console.log(response.data.errors);

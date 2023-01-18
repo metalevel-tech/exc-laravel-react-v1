@@ -11,6 +11,9 @@ const axiosClient = axios.create({
  *
  * HTTP 401 Unauthorized:
  * https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+ *
+ * HTTP 422 Validation error: (see Signup.jsx)
+ * https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422
  */
 
 axiosClient.interceptors.request.use((config) => {

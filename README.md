@@ -33,23 +33,6 @@ sudo n stable           # sudo n latest
 
 </details>
 
-## Install Laravel within the Project
-
-Run **`laravel new laravel-app`** to install Laravel within the project. Note that the project name is `laravel-app` and it is not possible to install it in already existing directory which is not empty, but the current GitHub repository was previously initialized...
-
-The next step is to setup the database details in the `laravel-app/.env` file. Then run [`php artisan migrate`](https://youtu.be/qJq9ZMB2Was?t=781) to create the tables in the database.
-
-```bash
-cd laravel-app/
-php artisan migrate
-```
-
-At this stage we can spin up the server and check the app in the browser.
-
-```bash
-php artisan serve
-```
-
 ## Install React within the Project
 
 Then we will use Vite to install React within the project. At this stage React is installed outside the Laravel's directory.
@@ -125,6 +108,56 @@ Refs:
 - [Auto Import of React Components in Visual Studio Code](https://stackoverflow.com/questions/60637561/auto-import-of-react-components-in-visual-studio-code)
 
 </details>
+
+## Install Laravel within the Project
+
+Run **`laravel new laravel-app`** to install Laravel within the project. Note that the project name is `laravel-app` and it is not possible to install it in already existing directory which is not empty, but the current GitHub repository was previously initialized...
+
+The next step is to setup the database details in the `laravel-app/.env` file. Then run [`php artisan migrate`](https://youtu.be/qJq9ZMB2Was?t=781) to create the tables in the database.
+
+```bash
+cd laravel-app/
+php artisan migrate
+```
+
+At this stage we can spin up the server and check the app in the browser.
+
+```bash
+php artisan serve
+```
+
+## Laravel API Setup
+
+Go inside the `laravel-app/` directory and follow the steps below to create the `api`.
+
+```bash
+cd `laravel-app/`
+```
+
+First generate the `AuthController` class with the `artisan` command.
+
+```bash
+php artisan make:controller Api/AuthController
+# INFO  Controller [app/Http/Controllers/Api/AuthController.php] created successfully.
+```
+
+Next, generate two new request classes with the `artisan` command.
+
+```bash
+php artisan make:request LoginRequest
+# INFO  Request [app/Http/Requests/LoginRequest.php] created successfully.
+```
+
+```bash
+php artisan make:request SignupRequest
+# INFO  Request [app/Http/Requests/SignupRequest.php] created successfully.
+```
+
+Then define `login()`, `register()` and `logout()` methods in the file [`AuthController.php`](laravel-app/app/Http/Controllers/Api/AuthController.php).
+
+The open [`routes/**api.php**`](laravel-app/routes/api.php) and configure the routes for the `AuthController`.
+
+The next step is to actually create the methods `login()`, `register()` and `logout()` in the file [`AuthController.php`](laravel-app/app/Http/Controllers/Api/AuthController.php): <https://youtu.be/qJq9ZMB2Was?t=4760>
 
 ## MySQL
 
