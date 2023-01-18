@@ -159,6 +159,8 @@ The open [`routes/**api.php**`](laravel-app/routes/api.php) and configure the ro
 
 The next step is to actually create the methods `login()`, `register()` and `logout()` in the file [`AuthController.php`](laravel-app/app/Http/Controllers/Api/AuthController.php): <https://youtu.be/qJq9ZMB2Was?t=4760>
 
+After that edit the newly created classes [`SignupRequest`](./laravel-app/app/Http/Requests/SignupRequest.php) and [`LoginRequest`](./laravel-app/app/Http/Requests/LoginRequest.php): allow the user's requests and define rules about the properties of the request.
+
 ## MySQL
 
 <details>

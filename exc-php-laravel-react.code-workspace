@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"php.problems.exclude": {
+			"vendor/": true
+		},
+		"npm-intellisense.importQuotes": "\"",
+		"reactSnippets.settings.prettierEnabled": true,
+		"reactSnippets.settings.importReactOnTop": true,
+		"php.suggest.basic": true,
+		"php.completion.parameters": "parameters",
+		"intelephense.phpdoc.useFullyQualifiedNames": true,
+		"php.completion.autoimport-docblock": "fqn",
+		"intelephense.diagnostics.undefinedMethods": false
+	}
+}
