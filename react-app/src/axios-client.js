@@ -27,16 +27,20 @@ axiosClient.interceptors.response.use(
     return response;
   },
   (error) => {
-    // Destructure the error object and get
-    // the actual response from the server.
-    const { response } = error;
+    try {
+      // Destructure the error object and get
+      // the actual response from the server.
+      const { response } = error;
 
-    // If the server response authorization is incorrect
-    // (expired token or incorrect) then remove the access token.
-    // Otherwise candle the other type of errors:
-    // on 404 show Page not found, etc... not implemented.
-    if (response.status === 401) {
-      localStorage.removeItem("ACCESS_TOKEN");
+      // If the server response authorization is incorrect
+      // (expired token or incorrect) then remove the access token.
+      // Otherwise candle the other type of errors:
+      // on 404 show Page not found, etc... not implemented.
+      if (response.status === 401) {
+        localStorage.removeItem("ACCESS_TOKEN");
+      }
+    } catch (e) {
+      console.error(e);
     }
 
     throw error;

@@ -13,7 +13,7 @@ class LoginRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,11 @@ class LoginRequest extends FormRequest
      */
     public function rules()
     {
+        // exists:user,email >> ruleName:tableName,columnName
+        // https://youtu.be/qJq9ZMB2Was?t=5192
         return [
-            //
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required'
         ];
     }
 }

@@ -24,16 +24,19 @@ class SignupRequest extends FormRequest
      */
     public function rules()
     {
+        // unique:user,email >> ruleName:tableName,columnName
+        // https://youtu.be/qJq9ZMB2Was?t=5192
+        // |unique:user,email
         return [
             'name' => 'required|string|max:60',
-            'email' => 'required|email',
+            'email' => "required|email|unique:users,email",
             'password' => [
                 'required',
                 'confirmed',
-                Password::min(8)
+                Password::min(4)
                     ->letters()
-                    ->symbols()
-                    ->numbers()
+                // ->symbols()
+                // ->numbers()
             ]
         ];
     }
