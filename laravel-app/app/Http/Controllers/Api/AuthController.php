@@ -64,6 +64,12 @@ class AuthController extends Controller
         return response(compact('user', 'token'));
     }
 
+    /**
+     * Summary of logout: should be available only for logged-in users,
+     * otherwise the $user object could not be created via
+     * the '$request->user()' method...
+     * see 'laravel-app/routes/api.php' and https://youtu.be/qJq9ZMB2Was?t=6412
+     */
     public function logout(Request $request)
     {
         /** @var User $user */

@@ -161,6 +161,8 @@ The next step is to actually create the methods `login()`, `register()` and `log
 
 After that edit the newly created classes [`SignupRequest`](./laravel-app/app/Http/Requests/SignupRequest.php) and [`LoginRequest`](./laravel-app/app/Http/Requests/LoginRequest.php): allow the user's requests and define rules about the properties of the request.
 
+Modify [`api.php`](laravel-app/routes/api.php) file create middleware group `auth:api` and move `/logout` route to this group: <https://youtu.be/qJq9ZMB2Was?t=6412>
+
 ## MySQL
 
 <details>

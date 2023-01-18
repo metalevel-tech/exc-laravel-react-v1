@@ -4,7 +4,7 @@ import axiosClient from "../axios-client";
 import { useStateContext } from "../contexts/ContextProvider";
 
 export default function DefaultLayout() {
-  const { user, token, setUser } = useStateContext();
+  const { user, token, setUser, setToken } = useStateContext();
 
   if (!token) {
     // The user is NOT authenticated
@@ -13,6 +13,13 @@ export default function DefaultLayout() {
 
   const onLogout = (ev) => {
     ev.preventDefault();
+
+    axiosClient.post("/logout").then(() => {
+      // This will cause React page rerender and
+      // the user will be navigated to the login page.
+      setUser({});
+      setToken(null);
+    });
   };
 
   /**

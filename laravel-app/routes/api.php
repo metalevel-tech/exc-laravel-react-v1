@@ -15,10 +15,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+/**
+ * logout: should be available only for logged-in users,
+ * otherwise the $user object could not be created via
+ * the '$request->user()' method...
+ * see 'laravel-app/app/Http/Controllers/Api/AuthController.php'
+ * and https://youtu.be/qJq9ZMB2Was?t=6412
+ */
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get(
+        '/user',
+        function (Request $request) {
+            return $request->user();
+        }
+    );
+
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
+
 
 Route::post('/signup', [AuthController::class, 'signup']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout']);
