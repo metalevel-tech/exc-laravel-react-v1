@@ -6,8 +6,12 @@ import React, { createContext, useContext, useState } from "react";
  */
 const StateContext = createContext({
   user: {
-    id: null,
-    name: ""
+    created_at: "2023-01-18T10:30:44.000000Z",
+    email: "email@example.com",
+    email_verified_at: null,
+    id: 3,
+    name: "Anon Anonymous",
+    updated_at: "2023-01-18T10:30:44.000000Z"
   },
   token: null,
   setUser: () => {},
@@ -20,10 +24,8 @@ const StateContext = createContext({
  * In our case it is the <RouterProvider router={router} />
  */
 export const ContextProvider = ({ children }) => {
-  // Create the actual states
-  const [user, setUser] = useState({
-    name: "Spas"
-  });
+  // Create the actual states, we can pass empty obj for user
+  const [user, setUser] = useState({ name: "Anon" });
   const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
 
   const setToken = (token) => {

@@ -23,6 +23,7 @@ export default function Login() {
     axiosClient
       .post("/login", payload)
       .then(({ data }) => {
+        // console.log(data);
         setUser(data.user);
         setToken(data.token);
       })
@@ -42,7 +43,7 @@ export default function Login() {
             setErrors({ message: [response.data.message] });
           }
         }
-        console.log(response.data);
+        // console.log(response.data);
       });
   };
 

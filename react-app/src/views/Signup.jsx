@@ -33,7 +33,6 @@ export default function Signup() {
         // ... see Login.jsx for example
         // `data` is the actual server's response. `status` is the status of the response,
         // we can use it in this way: if (status !== 200) throw new Error("Some error");
-
         const { data, status } = response;
 
         // Once the user and token are set tha application will be RERENDER
@@ -59,7 +58,7 @@ export default function Signup() {
             setErrors({ message: [response.data.message] });
           }
         }
-        console.log(response.data);
+        // console.log(response.data);
       });
   };
 

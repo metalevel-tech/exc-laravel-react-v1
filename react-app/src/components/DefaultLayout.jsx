@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate, Outlet, Link } from "react-router-dom";
+import axiosClient from "../axios-client";
 import { useStateContext } from "../contexts/ContextProvider";
 
 export default function DefaultLayout() {
-  const { user, token } = useStateContext();
+  const { user, token, setUser } = useStateContext();
 
   if (!token) {
     // The user is NOT authenticated
@@ -13,6 +14,27 @@ export default function DefaultLayout() {
   const onLogout = (ev) => {
     ev.preventDefault();
   };
+
+  /**
+   * Here we get the User's data from the server,
+   * when it is authenticated (have token),
+   * and the page is reloaded.
+   *
+   * Otherwise the default value 'Anon' will appear
+   * in the top bar: https://youtu.be/qJq9ZMB2Was?t=6222
+   *
+   * See the first directive in: laravel-app/routes/api.php
+   * The uri '/user' is available only for authenticated users.
+   *
+   * [] means we listen to the component did mount event.
+   * { data: user } - here we destructure the response and then
+   * assigning the value of 'data' to the variable 'user'.
+   */
+  useEffect(() => {
+    axiosClient.get("/user").then(({ data: user }) => {
+      setUser(user);
+    });
+  }, []);
 
   return (
     <div id="defaultLayout">
