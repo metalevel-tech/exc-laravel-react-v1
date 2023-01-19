@@ -201,7 +201,7 @@ table>tbody>tr>td {
 }
 
 #defaultLayout aside {
-  width: 240px;
+  width: 140px;
   background-color: #5b08a7;
   padding: 1rem
 }
@@ -258,5 +258,17 @@ table>tbody>tr>td {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .display-none-1024 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .display-none-820 {
+    display: none;
   }
 }

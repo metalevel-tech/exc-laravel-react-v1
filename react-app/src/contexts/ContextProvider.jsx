@@ -9,7 +9,7 @@ const StateContext = createContext({
     created_at: "2023-01-18T10:30:44.000000Z",
     email: "email@example.com",
     email_verified_at: null,
-    id: 3,
+    id: null,
     name: "Anon Anonymous",
     updated_at: "2023-01-18T10:30:44.000000Z"
   },

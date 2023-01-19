@@ -18,6 +18,11 @@ export default function Users() {
       .then(({ data }) => {
         // console.log(data);
         setUsers(data);
+
+        // Otherwise I can't see anything :)
+        setTimeout(() => {
+          setLoading(false);
+        }, 250);
       })
       .catch(() => {
         setLoading(false);
@@ -55,33 +60,44 @@ export default function Users() {
             <tr>
               <th>Id</th>
               <th>Full Name</th>
-              <th>Email</th>
-              <th>Create Date</th>
-              <th>Actions</th>
+              <th className="display-none-820">Email</th>
+              <th className="display-none-1024">Create Date</th>
+              <th style={{ textAlign: "right" }}>Actions</th>
             </tr>
           </thead>
-          <tbody>
-            {users.data.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.created_at}</td>
-                <td>
-                  <Link to={"/users/" + user.id} className="btn-edit">
-                    Edit
-                  </Link>
-                  &nbsp;
-                  <button
-                    onClick={(ev) => onDelete(user)}
-                    className="btn-delete"
-                  >
-                    Delete
-                  </button>
+          {loading && (
+            <tbody>
+              <tr>
+                <td colSpan="5" className="text-center">
+                  Loading data...
                 </td>
               </tr>
-            ))}
-          </tbody>
+            </tbody>
+          )}
+          {!loading && (
+            <tbody>
+              {users.data.map((user) => (
+                <tr key={user.id}>
+                  <td>{user.id}</td>
+                  <td>{user.name}</td>
+                  <td className="display-none-820">{user.email}</td>
+                  <td className="display-none-1024">{user.created_at}</td>
+                  <td style={{ textAlign: "right" }}>
+                    <Link to={"/users/" + user.id} className="btn-edit">
+                      Edit
+                    </Link>
+                    &nbsp;
+                    <button
+                      onClick={(ev) => onDelete(user)}
+                      className="btn-delete"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          )}
         </table>
       </div>
     </div>
