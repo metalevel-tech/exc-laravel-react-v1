@@ -1,11 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axiosClient from "../axios-client";
 
 export default function UserForm() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(false);
   const [user, setUser] = useState({
@@ -40,8 +41,42 @@ export default function UserForm() {
     }, []);
   }
 
+  const catchTheUserFormValidationErrors = (error) => {
+    const response = error.response;
+
+    if (response && response.status >= 400) {
+      if (response.data.errors) {
+        setErrors(response.data.errors);
+      } else {
+        setErrors({ message: [response.data.message] });
+      }
+    }
+  };
+
   const onSubmit = (ev) => {
     ev.preventDefault();
+
+    setErrors(null);
+
+    // If the property 'user.id' exist we are updating a user,
+    // otherwise we ae creating a new user.
+    if (user.id) {
+      axiosClient
+        .put(`/users/${user.id}`, user)
+        .then(() => {
+          // TODO: Show notification
+          navigate("/users");
+        })
+        .catch((error) => catchTheUserFormValidationErrors(error));
+    } else {
+      axiosClient
+        .post(`/users`, user)
+        .then(() => {
+          // TODO: Show notification
+          navigate("/users");
+        })
+        .catch((error) => catchTheUserFormValidationErrors(error));
+    }
   };
 
   return (
@@ -61,7 +96,11 @@ export default function UserForm() {
             ))}
           </div>
         )}
-        {/* Note this onChange ...setUser() approach wil cause the entire form to be rerendered when you type. */}
+        {/**
+          Note this onChange ...setUser() approach
+          will cause the entire form to be rerendered when you type.
+          In this count the user name in the heading.
+        */}
         {!loading && (
           <form onSubmit={onSubmit}>
             <input
@@ -96,6 +135,7 @@ export default function UserForm() {
               id="password-confirm"
               placeholder="Password Confirmation"
             />
+            <button className="btn">Save</button>
           </form>
         )}
       </div>
