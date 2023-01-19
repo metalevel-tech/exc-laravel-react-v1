@@ -25,7 +25,7 @@ const StateContext = createContext({
  */
 export const ContextProvider = ({ children }) => {
   // Create the actual states, we can pass empty obj for user
-  const [user, setUser] = useState({ name: "Anon" });
+  const [user, setUser] = useState({ name: "..." });
   const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
 
   const setToken = (token) => {

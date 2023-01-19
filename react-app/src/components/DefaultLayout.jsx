@@ -27,7 +27,7 @@ export default function DefaultLayout() {
    * when it is authenticated (have token),
    * and the page is reloaded.
    *
-   * Otherwise the default value 'Anon' will appear
+   * Otherwise the default value '...' will appear
    * in the top bar: https://youtu.be/qJq9ZMB2Was?t=6222
    *
    * See the first directive in: laravel-app/routes/api.php

@@ -192,6 +192,19 @@ After that edit the `api.php` file and add directive for `/users`, the `UserCont
 
 Now implement the `StoreUserRequest` and `UpdateUserRequest` classes - [Tutorial Ref.](https://youtu.be/qJq9ZMB2Was?t=7178).
 
+### Seed the database with the `User` model
+
+- [Tutorial Ref.](https://youtu.be/qJq9ZMB2Was?t=7468).
+
+First modify the class [`DatabaseSeeder`](laravel-app/database/seeders/DatabaseSeeder.php#18) to generate 50 random users.
+
+Then run the `artisan` command to seed the database with the `User` model.
+
+```bash
+php artisan db:seed
+# INFO  Seeding database.
+```
+
 ## MySQL
 
 <details>
@@ -220,6 +233,14 @@ scripts/sql/db_remove.sql | sudo mysql
 ```
 
 </details>
+
+## Notes
+
+### Pagination in Laravel
+
+- [Tutorial Ref.](https://youtu.be/qJq9ZMB2Was?t=7515)
+
+- On the image [...responseObject.png](assets/screenshots/UserController->index->paginate->responseObject.png) (within [`assets/`](assets/screenshots)) is shown a screenshot how the `paginate()` method returns the `UserResource` object with the `data`, `links` and `meta` properties.
 
 ## References
 
