@@ -128,11 +128,13 @@ php artisan serve
 
 ## Laravel API Setup
 
-Go inside the `laravel-app/` directory and follow the steps below to create the `api`.
+Go inside the `laravel-app/` directory and follow the steps below to create the relevant [**Controllers**](https://laravel.com/docs/9.x/controllers#main-content) and the relevant API routes.
 
 ```bash
 cd `laravel-app/`
 ```
+
+### AuthController:: login(), register() and logout()
 
 First generate the `AuthController` class with the `artisan` command.
 
@@ -162,6 +164,33 @@ The next step is to actually create the methods `login()`, `register()` and `log
 After that edit the newly created classes [`SignupRequest`](./laravel-app/app/Http/Requests/SignupRequest.php) and [`LoginRequest`](./laravel-app/app/Http/Requests/LoginRequest.php): allow the user's requests and define rules about the properties of the request.
 
 Modify [`api.php`](laravel-app/routes/api.php) file create middleware group `auth:api` and move `/logout` route to this group: <https://youtu.be/qJq9ZMB2Was?t=6412>
+
+### UserController:: index(), store(), show(), update() and destroy()
+
+Generate the `UserController` class with the following `artisan` command - [Tutorial Ref.](https://youtu.be/qJq9ZMB2Was?t=6667).
+
+```bash
+php artisan make:controller Api/UserController --model=User --resource --requests --api
+# INFO  Request [app/Http/Requests/StoreUserRequest.php] created successfully.
+# INFO  Request [app/Http/Requests/UpdateUserRequest.php] created successfully.
+# INFO  Controller [app/Http/Controllers/Api/UserController.php] created successfully.
+```
+
+- Without the `--api` option it will create a `UserController` class for web page with `edit()` and `create()` methods.
+
+Generate also `UserResource` class with the following `artisan` command - [Tutorial Ref.](https://youtu.be/qJq9ZMB2Was?t=6825). Resource is basically a class which is used to convert the database models into JSON serializable data which will be sent from the API to any client.
+
+```bash
+php artisan make:resource UserResource
+# INFO  Resource [app/Http/Resources/UserResource.php] created successfully.
+```
+
+Edit the `UserResource` class and implement the `toArray()` method.
+Then edit the `UserController` class and add the methods `index()`, `store()`, `show()`, `update()` and `destroy()`.
+
+After that edit the `api.php` file and add directive for `/users`, the `UserController` - [Tutorial Ref.](https://youtu.be/qJq9ZMB2Was?t=7160).
+
+Now implement the `StoreUserRequest` and `UpdateUserRequest` classes - [Tutorial Ref.](https://youtu.be/qJq9ZMB2Was?t=7178).
 
 ## MySQL
 
