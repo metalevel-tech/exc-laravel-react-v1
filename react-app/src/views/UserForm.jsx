@@ -26,7 +26,8 @@ export default function UserForm() {
         .get(`/users/${id}`)
         .then(({ data }) => {
           // console.log(data);
-          setUser(data.data);
+          // See: laravel-app/app/Http/Resources/UserResource.php#10
+          setUser(data);
 
           // Otherwise I can't see anything :)
           setTimeout(() => {
@@ -61,40 +62,42 @@ export default function UserForm() {
           </div>
         )}
         {/* Note this onChange ...setUser() approach wil cause the entire form to be rerendered when you type. */}
-        <form onSubmit={onSubmit}>
-          <input
-            value={user.name}
-            onChange={(ev) => setUser({ ...user, name: ev.target.value })}
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Name"
-          />
-          <input
-            value={user.email}
-            onChange={(ev) => setUser({ ...user, email: ev.target.value })}
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email"
-          />
-          <input
-            onChange={(ev) => setUser({ ...user, password: ev.target.value })}
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password"
-          />
-          <input
-            onChange={(ev) =>
-              setUser({ ...user, password_confirmation: ev.target.value })
-            }
-            type="password"
-            name="password-confirm"
-            id="password-confirm"
-            placeholder="Password Confirmation"
-          />
-        </form>
+        {!loading && (
+          <form onSubmit={onSubmit}>
+            <input
+              value={user.name}
+              onChange={(ev) => setUser({ ...user, name: ev.target.value })}
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name"
+            />
+            <input
+              value={user.email}
+              onChange={(ev) => setUser({ ...user, email: ev.target.value })}
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+            />
+            <input
+              onChange={(ev) => setUser({ ...user, password: ev.target.value })}
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+            />
+            <input
+              onChange={(ev) =>
+                setUser({ ...user, password_confirmation: ev.target.value })
+              }
+              type="password"
+              name="password-confirm"
+              id="password-confirm"
+              placeholder="Password Confirmation"
+            />
+          </form>
+        )}
       </div>
     </div>
   );

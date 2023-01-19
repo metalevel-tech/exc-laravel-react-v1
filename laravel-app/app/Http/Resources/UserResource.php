@@ -7,6 +7,15 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class UserResource extends JsonResource
 {
     /**
+     * Unwrap: By default this property is $wrap='data',
+     * so at the frontend we need to: `setUser(data.data);`,
+     * see: 'react-app/src/views/UserForm.jsx'
+     * If we change it to 'false' the wrapper object 'data'
+     * will be disabled.
+     */
+    public static $wrap = false;
+
+    /**
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
