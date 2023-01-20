@@ -88,16 +88,39 @@ input:focus {
   background-color: #b72424;
 }
 
+.btn-pagination,
 .btn-logout {
   text-decoration: none;
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1rem;
   color: #212121;
   transition: all 0.3s;
   border-radius: 6px;
+  margin-left: .5rem;
 }
 
+.btn-pagination:hover,
 .btn-logout:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+ul.pagination-list {
+  margin-top: 0;
+  padding: 0;
+}
+
+li.btn-pagination {
+  margin: 0 .2rem;
+  display: inline-block;
+  cursor: pointer;
+}
+
+li.btn-pagination.highlight {
+  border: 1px solid lightgrey;
+  cursor: default;
+}
+
+li.btn-pagination.highlight:hover {
+  background: transparent;
 }
 
 .btn:hover,

@@ -18,6 +18,7 @@ The exercise is based on the tutorial ["React + Laravel Full-stack Application |
   - [MySQL](#mysql)
   - [Notes](#notes)
     - [Pagination in Laravel](#pagination-in-laravel)
+    - [Deploy Laravel on a Production Server](#deploy-laravel-on-a-production-server)
     - [Use NGINX or Apache2 to Serve the Application](#use-nginx-or-apache2-to-serve-the-application)
   - [References](#references)
 
@@ -258,6 +259,17 @@ assets/sql/db_remove.sql | sudo mysql
 - [Tutorial Ref.](https://youtu.be/qJq9ZMB2Was?t=7515)
 
 - On the image [...responseObject.png](assets/screenshots/UserController->index->paginate->responseObject.png) (within [`assets/`](assets/screenshots)) is shown a screenshot how the `paginate()` method returns the `UserResource` object with the `data`, `links` and `meta` properties.
+
+### Deploy Laravel on a Production Server
+
+First you need to install the `composer` dependencies.
+
+Then may want to create, inspect carefully and modify the [`.env`](laravel-app/.env) file of the application, and the run at least the following commands - [Tutorial Ref.](https://youtu.be/qJq9ZMB2Was?t=10927).
+
+```bash
+php artisan key:generate --ansi
+php artisan config:cache
+```
 
 ### Use NGINX or Apache2 to Serve the Application
 

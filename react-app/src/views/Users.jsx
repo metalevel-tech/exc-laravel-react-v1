@@ -13,10 +13,10 @@ export default function Users() {
     getUsers();
   }, []);
 
-  const getUsers = () => {
+  const getUsers = (page) => {
     setLoading(true);
     axiosClient
-      .get("/users")
+      .get(page ? "/users?page=" + page : "/users")
       .then(({ data }) => {
         // console.log(data);
         setUsers(data);
@@ -57,6 +57,30 @@ export default function Users() {
         </Link>
       </div>
       <div className="card animated fadeInDown">
+        {users.meta.links && (
+          <ul className="pagination-list">
+            {users.meta.links.map(
+              (link, index, array) =>
+                index != 0 &&
+                index != array.length - 1 && (
+                  <li
+                    key={index}
+                    className={
+                      link.active
+                        ? "btn-pagination highlight"
+                        : "btn-pagination"
+                    }
+                    onClick={() => {
+                      !link.active && getUsers(link.label);
+                      // console.log(link.url);
+                    }}
+                  >
+                    <div>{index}</div>
+                  </li>
+                )
+            )}
+          </ul>
+        )}
         <table>
           <thead>
             <tr>
