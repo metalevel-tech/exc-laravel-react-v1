@@ -72,8 +72,8 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
-.env.test
+# .env
+# .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -113,9 +113,9 @@ dist
 /public/storage
 /storage/*.key
 /vendor
-.env
-.env.backup
-.env.production
+# .env
+# .env.backup
+# .env.production
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml

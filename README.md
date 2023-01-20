@@ -261,7 +261,9 @@ assets/sql/db_remove.sql | sudo mysql
 
 ### Use NGINX or Apache2 to Serve the Application
 
-In the directory [`assets/web.conf/`](assets/web.conf/) are shown two example configuration files for NGINX and Apache2 that allows you to setup them to serve Laravel. The third configuration file available there is the most interesting.
+- In the directory [`assets/web.conf/`](assets/web.conf/) are shown two example configuration files for NGINX and Apache2 that allows you to setup them to serve Laravel. The third configuration file available there is the most interesting.
+
+- Some details about the production setup of the app could be found [at the end of the Tutorial provided by TheCodeholic](https://youtu.be/qJq9ZMB2Was?t=10114).
 
 [**`app-nginx.conf`**](assets/web.conf/app-nginx.conf) is used to serve the React application and Laravel simultaneously via NGINX. React is accessible on the `/` route and Laravel on the `/laravel` route.
 
