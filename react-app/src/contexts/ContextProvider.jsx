@@ -13,9 +13,11 @@ const StateContext = createContext({
     name: "Anon Anonymous",
     updated_at: "2023-01-18T10:30:44.000000Z"
   },
-  token: null,
   setUser: () => {},
-  setToken: () => {}
+  token: null,
+  setToken: () => {},
+  notification: null,
+  setNotification: () => {}
 });
 
 /**
@@ -27,6 +29,7 @@ export const ContextProvider = ({ children }) => {
   // Create the actual states, we can pass empty obj for user
   const [user, setUser] = useState({ name: "..." });
   const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
+  const [notification, _setNotification] = useState("");
 
   const setToken = (token) => {
     _setToken(token);
@@ -38,15 +41,25 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
+  const setNotification = (message) => {
+    _setNotification(message);
+
+    setTimeout(() => {
+      _setNotification("");
+    }, 3000);
+  };
+
   return (
     // The outer curly braces are for React,
     // the inner are for the passing JS-object.
     <StateContext.Provider
       value={{
         user,
+        setToken,
         token,
         setUser,
-        setToken
+        notification,
+        setNotification
       }}
     >
       {children}

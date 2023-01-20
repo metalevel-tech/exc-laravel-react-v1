@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axiosClient from "../axios-client";
+import { useStateContext } from "../contexts/ContextProvider";
 
 export default function Users() {
   // See assets/screenshots/UserController->index->paginate->responseObject.png
   const [users, setUsers] = useState({ data: [], links: {}, meta: {} });
   const [loading, setLoading] = useState(false);
+  const { setNotification } = useStateContext();
 
   useEffect(() => {
     getUsers();
@@ -35,7 +37,7 @@ export default function Users() {
     if (!window.confirm(question(user.id))) return;
 
     axiosClient.delete(`/users/${user.id}`).then(() => {
-      // TODO: Display notification
+      setNotification(`The user with Id:${user.id} was successfully removed!`);
       getUsers();
     });
   };
