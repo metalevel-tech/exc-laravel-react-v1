@@ -2,6 +2,25 @@
 
 The exercise is based on the tutorial ["React + Laravel Full-stack Application | Build and Deploy"](https://youtu.be/qJq9ZMB2Was) provided by [TheCodeholic](https://thecodeholic.com/) on YouTube.
 
+****Table of Contents****
+
+- [Laravel and React Full-stack App Exercise](#laravel-and-react-full-stack-app-exercise)
+  - [Deploy the dependencies](#deploy-the-dependencies)
+    - [Get Composer](#get-composer)
+    - [Install Laravel Installer and Check System Requirements](#install-laravel-installer-and-check-system-requirements)
+    - [Install NodeJS and NPM](#install-nodejs-and-npm)
+  - [Install React within the Project](#install-react-within-the-project)
+  - [Install Laravel within the Project](#install-laravel-within-the-project)
+  - [Laravel API Setup](#laravel-api-setup)
+    - [AuthController:: login(), register() and logout()](#authcontroller-login-register-and-logout)
+    - [UserController:: index(), store(), show(), update() and destroy()](#usercontroller-index-store-show-update-and-destroy)
+    - [Seed the database with the `User` model](#seed-the-database-with-the-user-model)
+  - [MySQL](#mysql)
+  - [Notes](#notes)
+    - [Pagination in Laravel](#pagination-in-laravel)
+    - [Use NGINX or Apache2 to Serve the Application](#use-nginx-or-apache2-to-serve-the-application)
+  - [References](#references)
+
 ## Deploy the dependencies
 
 <details>
@@ -207,13 +226,11 @@ php artisan db:seed
 
 ## MySQL
 
+In the directory [`assets/sql/`](assets/sql/) are available three manual like SQL files. We can suppress the comments and use them as SQL scrips to create or remove the `db_name` and `db_admin` MySQL database and user used in this tutorial.
+
 <details>
 
-<summary> <em>Create or Remove Database:</em>
-
-In the directory [`scripts/sql`](scripts/sql/) are available three manual like SQL files. We can suppress the comments and use them as SQL scrips to create or remove the `db_name` and `db_admin` MySQL database and user used in this tutorial.
-
-</summary>
+<summary> <em>Create or Remove Database. Click for details.</em> </summary>
 
 ```bash
 sed -r \
@@ -221,7 +238,7 @@ sed -r \
 -e 's/db_name/db_name/g' \
 -e 's/db_admin/db_admin/g' \
 -e 's/strong-password/strong-password/g' \
-scripts/sql/mariadb_db_create.sql | sudo mysql # scripts/sql/mysql_db_create.sql | sudo mysql
+assets/sql/mariadb_db_create.sql | sudo mysql # assets/sql/mysql_db_create.sql | sudo mysql
 ```
 
 ```bash
@@ -229,7 +246,7 @@ sed -r \
 -e '/^(-- |$)/d' \
 -e 's/db_name/db_name/g' \
 -e 's/db_admin/db_admin/g' \
-scripts/sql/db_remove.sql | sudo mysql
+assets/sql/db_remove.sql | sudo mysql
 ```
 
 </details>
@@ -241,6 +258,36 @@ scripts/sql/db_remove.sql | sudo mysql
 - [Tutorial Ref.](https://youtu.be/qJq9ZMB2Was?t=7515)
 
 - On the image [...responseObject.png](assets/screenshots/UserController->index->paginate->responseObject.png) (within [`assets/`](assets/screenshots)) is shown a screenshot how the `paginate()` method returns the `UserResource` object with the `data`, `links` and `meta` properties.
+
+### Use NGINX or Apache2 to Serve the Application
+
+In the directory [`assets/web.conf/`](assets/web.conf/) are shown two example configuration files for NGINX and Apache2 that allows you to setup them to serve Laravel. The third configuration file available there is the most interesting.
+
+[**`app-nginx.conf`**](assets/web.conf/app-nginx.conf) is used to serve the React application and Laravel simultaneously via NGINX. React is accessible on the `/` route and Laravel on the `/laravel` route.
+
+The document root of the React application is the directory `<project-location>/react-app/dist` directory. So you need to build the application first:
+
+```bash
+cd react-app/
+npm run build
+```
+
+- Note also the file [`.env.production`](react-app/.env.production).
+
+The document root of the Laravel application is the directory `<project-location>/laravel-app/public` directory, but some other directories (like as `laravel-app/storage`, etc.) must be writable by the web server's user (`www-data` (uid:33|gid:33). For this purpose, while the application is not at final production state I would like to bind the project's directory into a directory inside `/var/www/`, as it is shown in the snipped [`assets/fstab/fstab`](assets/fstab/fstab). Thus we deal gracefully with the web server's and the developer's permissions.
+
+After that step you need to go inside the directory `/var/www/<project mount point>/laravel` and rebuild the configuration files of Laravel:
+
+```bash
+cd /var/www/<project mount point>/laravel-app/
+sudo -u www-data php artisan config:cache
+```
+
+Now you can serve Laravel via NGINX (or Apache2). Later if you need to serve Laravel via `artisan` for dev purpose, you can use the following command either from the bind directory or from the project's one:
+
+```bash
+sudo -u www-data php artisan serve
+```
 
 ## References
 

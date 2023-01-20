@@ -1,0 +1,5 @@
+# Bindfs for www-data (iud: 33, gid: 33) to <user> (uid: 1000, gid: 1000), you can use the users names instead of the ids.
+bindfs#/home/<user>/Git/exc-laravel-react-v1 /var/www/app.example.com fuse force-user=33,force-group=33,create-for-user=1000,create-for-group=1000 0 0
+# References:
+# > https://github.com/metalevel-tech/bindfs-to-home-bash
+# > https://askubuntu.com/questions/1024194/setting-up-sftp-to-log-in-to-server-with-filezilla-and-access-files-outside-my-h/1024308#1024308
