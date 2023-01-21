@@ -307,9 +307,6 @@ sudo -u www-data php artisan serve
 
 - [Laravel](https://laravel.com/)
 - [Composer Download](https://getcomposer.org/download/)
-- [React](https://reactjs.org/)
-- [React Router](https://reactrouter.com/)
-- [React Router GitHub](https://github.com/remix-run/react-router)
 - [What's New In React 18?](https://blog.webdevsimplified.com/2021-06/react-18-changes/)
 - [NodeJS and NPM Install](https://wiki.metalevel.tech/wiki/Node.js_Getting_Started)
 - [Vite: Next Generation Frontend Tooling](https://vitejs.dev/)
@@ -317,12 +314,18 @@ sudo -u www-data php artisan serve
 - [MariaDB Docs](https://mariadb.com/kb/en/authentication-from-mariadb-104/)
 - [HTTP Status Codes | MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 - [TheCodeholic at GitHub: laravel-react-starter](https://github.com/thecodeholic/laravel-react-starter)
+- React:
+  - [React](https://reactjs.org/)
+  - [React Router](https://reactrouter.com/)
+  - [React Router GitHub](https://github.com/remix-run/react-router)
+  - [**How to use `setState` callback on react hooks**](https://stackoverflow.com/q/56247433/6543935)
+  - [Emotion: a library designed for writing css styles with JavaScript.](https://emotion.sh/docs/introduction)
 - React and VSCode:
   - [JavaScript in Visual Studio Code](https://code.visualstudio.com/docs/languages/javascript)
   - [jsconfig.json in Visual Studio Code](https://code.visualstudio.com/docs/languages/jsconfig)
   - [Using React in Visual Studio Code](https://code.visualstudio.com/docs/nodejs/reactjs-tutorial)
+  - [VSCode Auto Replace Single Quotes with Double Quotes](https://ourtechroom.com/fix/vscode-auto-replace-single-quotes-with-double-quotes-solved/)
 - Next to learn:
   - [Laravel Bootcamp](https://bootcamp.laravel.com/introduction)
   - [Laravel Starter Kits](https://laravel.com/docs/9.x/starter-kits)
   - [Laravel Asset Bundling (Vite)](https://laravel.com/docs/9.x/vite#react)
-  - [VSCode Auto Replace Single Quotes with Double Quotes](https://ourtechroom.com/fix/vscode-auto-replace-single-quotes-with-double-quotes-solved/)
