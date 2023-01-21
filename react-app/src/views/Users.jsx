@@ -4,8 +4,9 @@ import axiosClient from "../axios-client";
 import { useStateContext } from "../contexts/ContextProvider";
 
 export default function Users() {
-  // See assets/screenshots/UserController->index->paginate->responseObject.png
+  // See: assets/screenshots/UserController->index->paginate->responseObject.png
   const [users, setUsers] = useState({ data: [], links: {}, meta: {} });
+  const [page, setPage] = useState(localStorage.getItem("USERS_PAG_PAGE"));
   const [loading, setLoading] = useState(false);
   const { setNotification } = useStateContext();
 
@@ -13,7 +14,12 @@ export default function Users() {
     getUsers();
   }, []);
 
-  const getUsers = (page) => {
+  useEffect(() => {
+    localStorage.setItem("USERS_PAG_PAGE", page);
+    getUsers();
+  }, [page]);
+
+  const getUsers = () => {
     setLoading(true);
     axiosClient
       .get(page ? "/users?page=" + page : "/users")
@@ -24,7 +30,7 @@ export default function Users() {
         // Otherwise I can't see anything :)
         setTimeout(() => {
           setLoading(false);
-        }, 250);
+        }, 0);
       })
       .catch(() => {
         setLoading(false);
@@ -71,7 +77,7 @@ export default function Users() {
                         : "btn-pagination"
                     }
                     onClick={() => {
-                      !link.active && getUsers(link.label);
+                      !link.active && setPage(link.label);
                       // console.log(link.url);
                     }}
                   >
