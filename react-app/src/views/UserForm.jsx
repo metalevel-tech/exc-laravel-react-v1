@@ -66,7 +66,7 @@ export default function UserForm() {
       axiosClient
         .put(`/users/${user.id}`, user)
         .then(() => {
-          setNotification("USer was successfully updated.");
+          setNotification("User was successfully updated.");
           navigate("/users");
         })
         .catch((error) => catchTheUserFormValidationErrors(error));
@@ -74,7 +74,7 @@ export default function UserForm() {
       axiosClient
         .post(`/users`, user)
         .then(() => {
-          setNotification("USer was successfully created!");
+          setNotification("User was successfully created!");
           navigate("/users");
         })
         .catch((error) => catchTheUserFormValidationErrors(error));
