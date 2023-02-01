@@ -1,0 +1,59 @@
+{
+  "cSpell.words": [
+    "Arrayable",
+    "autoimport",
+    "Bootcamp",
+    "Codeholic",
+    "esversion",
+    "intelephense",
+    "Laravel",
+    "phpdoc",
+    "signup",
+    "Signup"
+  ],
+  "markdownlint.config": {
+    "MD033": false
+  },
+  "php.problems.exclude": {
+    "/": [406],
+    "vendor/": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": null,
+  "spellright.language": [
+    "en-US-10-1.",
+    "en-US-9-0."
+  ],
+  "spellright.documentTypes": [
+    "markdown",
+    "latex",
+    "plaintext",
+    "php"
+  ],
+  "npm-intellisense.importQuotes": "\"",
+  "javascript.preferences.quoteStyle": "double",
+  "typescript.preferences.quoteStyle": "double",
+  "reactSnippets.settings.prettierEnabled": true,
+  "reactSnippets.settings.importReactOnTop": true,
+  // "prettier.semi": true,
+  // "prettier.singleQuote": false,
+  // "prettier.jsxSingleQuote": false,
+  // "prettier.trailingComma": "none",
+  // "prettier.singleAttributePerLine": true,
+  // "prettier.bracketSpacing": true,
+  // "prettier.printWidth": 90,
+  "eslint.format.enable": true,
+  "eslint.run": "onType",
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+  "php.suggest.basic": true,
+  "php.completion.parameters": "parameters",
+  "intelephense.phpdoc.useFullyQualifiedNames": true,
+  "php.completion.autoimport-docblock": "fqn",
+  "intelephense.diagnostics.undefinedMethods": false,
+}
