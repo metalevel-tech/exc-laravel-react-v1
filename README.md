@@ -28,7 +28,7 @@ The exercise is based on the tutorial ["React + Laravel Full-stack Application |
 
 ### Get Composer
 
-First [download](https://getcomposer.org/download/) `composer.phar`, then you can move it somewhere in your `$PATH` or use it as local executable, e.g. `php composer.phar` or `./composer.phar --version`. In my case I moved it to **`~/composer`**.
+First [download](https://getcomposer.org/download/) `composer.phar`, then you can move it somewhere in your `$PATH` or use it as local executable, e.g. `php composer.phar` or `./composer.phar --version`. In my case I moved it to **`/usr/local/bin/composer`**.
 
 In order to get the list of [the global envvars of composer](https://stackoverflow.com/q/30664220/6543935), run `composer config --list --global`, of to get the location of the binaries run `composer global config bin-dir --absolute`.
 
@@ -262,13 +262,18 @@ assets/sql/db_remove.sql | sudo mysql
 
 ### Deploy Laravel on a Production Server
 
-First you need to install the `composer` dependencies.
+First you need to install the `composer` dependencies - i.e.:
+
+```bash
+sudo -u www-data composer install
+```
 
 Then may want to create, inspect carefully and modify the [`.env`](laravel-app/.env) file of the application, and the run at least the following commands - [Tutorial Ref.](https://youtu.be/qJq9ZMB2Was?t=10927).
 
 ```bash
-php artisan key:generate --ansi
-php artisan config:cache
+sudo -u www-data php artisan migrate
+sudo -u www-data php artisan key:generate --ansi
+sudo -u www-data php artisan config:cache
 ```
 
 ### Use NGINX or Apache2 to Serve the Application
